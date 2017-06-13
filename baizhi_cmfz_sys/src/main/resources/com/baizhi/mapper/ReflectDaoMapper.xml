@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ReflectDao">
+<resultMap id="refl" type="Reflect">
+    <id column="id" property="id"/>
+    <result column="description" property="description"/>
+    <result column="date" property="date"/>
+    <association property="user" column="userid" javaType="user" select="com.baizhi.dao.UserDao.queryById"/>
+</resultMap>
+<select id="queryAll" resultMap="refl">
+  select id,description,date,userid from c_reflect
+</select>
+<delete id="delete" parameterType="String">
+    delete from c_reflect where id=#{id}
+</delete>
+</mapper>

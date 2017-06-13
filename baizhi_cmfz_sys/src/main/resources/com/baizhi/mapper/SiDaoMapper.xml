@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.SiDao">
+
+<select id="queryByType" resultType="Si">
+  select id,title,name,date,type,path,txt from c_si where type=#{type}
+</select><insert id="save" parameterType="Si">
+        insert into c_admin values(#{id},#{title},#{name},#{date},#{type},
+        #{path},#{txt})
+    </insert>
+    <delete id="delete" parameterType="String">
+        delete from c_si where id=#{id}
+    </delete>
+    <select id="queryById" parameterType="String" resultType="Si">
+        select id,title,name,date,type,path,txt from c_si where id=#{id}
+    </select>
+    <select id="queryAll" resultType="Si">
+        select id,title,name,date,type,path,txt from c_si
+    </select>
+</mapper>

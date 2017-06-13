@@ -1,0 +1,117 @@
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
+<script>
+    var $dg,$da;
+    $(function () {
+        $dg = $("#adDg");
+        $da = $("#adDa");
+        $dg.datagrid({
+            url: '${pageContext.request.contextPath}/si/queryAll',
+            //fit:true,
+            width:'100%',
+            height:'100%',
+            columns: [[
+                {title: "编号", field: "id",width:100, align: 'center'},
+                {title: "标题", field: "title",width:100,  align: 'center'},
+                {title: "上师姓名", field: "name",width:100, align: 'center'},
+                {title: "发布日期", field: "date",width:100, align: 'center'},
+                {title: "类型", field: "type",width:100, align: 'center'},
+                {title: "图片路径", field: "link",width:100, align: 'center'},
+                {title: "文章的html", field: "description",width:100, align: 'center'},
+                {
+                    title: "操作", field: "options", width: 160, align: 'center',
+                    formatter: function (value, row, index) {
+                        return "<a class='del' onClick=\"del('" + row.id + "')\" href='javascript:;'>删除</a>&nbsp;&nbsp;";
+                    }
+                }
+            ]],
+            onLoadSuccess: function (data) {
+                $(".del").linkbutton({
+                    plain: true,
+                    iconCls: 'icon-remove',
+
+                });
+                $(".edit").linkbutton({
+                    plain: true,
+                    iconCls: 'icon-edit',
+                });
+            },
+            pagination:true,
+            pageNumber:2,
+            pageSize:2,
+            pageList:[2,4,6,8,10],
+            toolbar:'#tb',
+
+
+        });
+    });
+
+    //删除的操作
+    function del(id){
+        $.messager.confirm("提示","您确定要删除吗?",function(r){
+            if(r){
+                //发送异步请求删除数据
+                $.post("${pageContext.request.contextPath}/si/delete",{"id":id});
+                $dg.datagrid('reload');
+            }
+        });
+    }
+    //修改的操作
+    function add(){
+        $da.dialog({
+            width:600,
+            height:300,
+            title:"文章详细信息",
+            iconCls:"icon-man",
+            href:'${pageContext.request.contextPath}/back/main/si/update.jsp?id='+id,
+            buttons:[{
+                text:'保存',
+                iconCls:'icon-save',
+                handler:saveStu,
+            },{
+                text:'关闭',
+                iconCls:'icon-cancel',
+                handler:closeDa,
+            }],
+
+        });
+
+    }
+
+
+    //保存用户
+    function saveStu(){
+        $("#inputForm").form('submit',{
+            url:'xiaohei',
+            success:function(){
+                $da.dialog('close',true);
+                $dg.datagrid('reload');
+            }
+        });
+    }
+
+    //关闭对话框
+    function closeDa(){
+        $da.dialog('close',true);
+    }
+
+    //搜索的处理程序
+    function search(value,name){
+        console.log(value);
+        console.log(name);
+        $dg.datagrid('load',{
+            name:value
+        });
+    }
+</script>
+<div  class="easyui-layout" data-options="fit:true">
+
+    <div data-options="region:'center',">
+        <table id="adDg" ></table>
+
+
+        <div id="adDa"></div>
+    </div>
+    <div id="tb">
+        <a href="#" onclick="add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
+    </div>
+</div>

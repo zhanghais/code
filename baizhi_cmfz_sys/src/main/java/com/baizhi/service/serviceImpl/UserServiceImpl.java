@@ -1,5 +1,6 @@
 package com.baizhi.service.serviceImpl;
 
+import com.baizhi.dao.ReflectDao;
 import com.baizhi.dao.UserDao;
 import com.baizhi.entity.User;
 import com.baizhi.service.UserService;
@@ -17,6 +18,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ReflectDao reflectDao;
     public User queryById(String id) {
         User user = userDao.queryById(id);
         return user;
@@ -32,6 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void delete(String id) {
+        reflectDao.deleteByUserId(id);
         userDao.delete(id);
     }
 }

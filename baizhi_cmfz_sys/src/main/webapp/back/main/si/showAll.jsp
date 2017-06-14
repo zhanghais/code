@@ -2,8 +2,8 @@
 <script>
     var $dg,$da;
     $(function () {
-        $dg = $("#adDg");
-        $da = $("#adDa");
+        $dg = $("#sidDg");
+        $da = $("#sidDa");
         $dg.datagrid({
             url: '${pageContext.request.contextPath}/si/queryAll',
             //fit:true,
@@ -15,8 +15,14 @@
                 {title: "上师姓名", field: "name",width:100, align: 'center'},
                 {title: "发布日期", field: "date",width:100, align: 'center'},
                 {title: "类型", field: "type",width:100, align: 'center'},
-                {title: "图片路径", field: "link",width:100, align: 'center'},
+
                 {title: "文章的html", field: "description",width:100, align: 'center'},
+                {
+                    title: "封面图片", field: "wen", width: 60, align: 'center',
+                    formatter: function (value, row, index) {
+                        return '<img style="width:50px; height:40px" src=\"${pageContext.request.contextPath}/'+row.path+'\"/>';
+                    }
+                },
                 {
                     title: "操作", field: "options", width: 160, align: 'center',
                     formatter: function (value, row, index) {
@@ -39,7 +45,7 @@
             pageNumber:2,
             pageSize:2,
             pageList:[2,4,6,8,10],
-            toolbar:'#tb',
+            toolbar:'#si',
 
 
         });
@@ -62,7 +68,7 @@
             height:300,
             title:"文章详细信息",
             iconCls:"icon-man",
-            href:'${pageContext.request.contextPath}/back/main/si/update.jsp?id='+id,
+            href:'${pageContext.request.contextPath}/back/main/si/add.jsp',
             buttons:[{
                 text:'保存',
                 iconCls:'icon-save',
@@ -80,8 +86,8 @@
 
     //保存用户
     function saveStu(){
-        $("#inputForm").form('submit',{
-            url:'xiaohei',
+        $("#aForm").form('submit',{
+            url:'${pageContext.request.contextPath}/si/save',
             success:function(){
                 $da.dialog('close',true);
                 $dg.datagrid('reload');
@@ -106,12 +112,12 @@
 <div  class="easyui-layout" data-options="fit:true">
 
     <div data-options="region:'center',">
-        <table id="adDg" ></table>
+        <table id="sidDg" ></table>
 
 
-        <div id="adDa"></div>
+        <div id="sidDa"></div>
     </div>
-    <div id="tb">
+    <div id="si">
         <a href="#" onclick="add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
     </div>
 </div>

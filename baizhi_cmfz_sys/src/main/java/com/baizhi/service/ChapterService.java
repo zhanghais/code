@@ -12,4 +12,5 @@ public interface ChapterService {
     void delete(String id);
     Chapter queryById(String id);
     List<Chapter> queryAll();
+    List<Chapter> queryByWenId(String id);
 }

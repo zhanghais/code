@@ -10,11 +10,9 @@ public class Reflect implements Serializable{
     private String description;
     private Date date;
     private User user;
-
     public Reflect() {
         super();
     }
-
     @Override
     public String toString() {
         return "Reflect{" +

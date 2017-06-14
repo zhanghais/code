@@ -13,4 +13,7 @@
 <delete id="delete" parameterType="String">
     delete from c_reflect where id=#{id}
 </delete>
+    <delete id="deleteByUserId" parameterType="String">
+        delete from c_reflect where userid=#{id}
+    </delete>
 </mapper>

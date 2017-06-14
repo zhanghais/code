@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.WenDao">
+            <select id="queryAll" resultType="Wen">
+                select id,thumbnail,score,author,broadscast,count,brief,createDate,title from c_wen
+            </select>
+            <select id="queryById" parameterType="String" resultType="Wen">
+                select id,thumbnail,score,author,broadscast,count,brief,createDate,title from c_wen where id=#{id}
+            </select>
+</mapper>

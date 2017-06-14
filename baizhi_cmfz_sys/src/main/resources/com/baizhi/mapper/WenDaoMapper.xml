@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
         <mapper namespace="com.baizhi.dao.WenDao">
             <select id="queryAll" resultType="Wen">
-                select id,thumbnail,score,author,broadscast,count,brief,createDate from c_wen
+                select id,thumbnail,score,author,broadscast,count,brief,createDate,title from c_wen
             </select>
             <select id="queryById" parameterType="String" resultType="Wen">
-                select id,thumbnail,score,author,broadscast,count,brief,createDate from c_wen where id=#{id}
+                select id,thumbnail,score,author,broadscast,count,brief,createDate,title from c_wen where id=#{id}
             </select>
             <insert id="save" parameterType="Wen">
-                insert into c_wen values(#{thumbnail},#{score},#{author},#{broadscast},#{count},#{brief},#{createDate})
+                insert into c_wen values(#{id},#{thumbnail},#{score},#{author},#{broadscast},#{count},#{brief},#{createDate},#{title})
             </insert>
             <delete id="delete" parameterType="String">
                 delete from c_wen where id=#{id}
     </delete>
     <update id="update" parameterType="Wen">
-        update c_wen set thumbnail=#{thumbnail},score=#{score},author=#{author},broadscast=#{broadscast},count=#{count},brief=#{brief},createDate=#{createDate} where id=#{id}
+        update c_wen set thumbnail=#{thumbnail},score=#{score},author=#{author},broadscast=#{broadscast},count=#{count},brief=#{brief},createDate=#{createDate},title=#{title} where id=#{id}
     </update>
 </mapper>

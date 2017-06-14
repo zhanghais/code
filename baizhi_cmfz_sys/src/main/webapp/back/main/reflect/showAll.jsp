@@ -2,8 +2,8 @@
 <script>
     var $dg,$da;
     $(function () {
-        $dg = $("#stDg");
-        $da = $("#stDa");
+        $dg = $("#reDg");
+        $da = $("#reDa");
         $dg.datagrid({
             url: '${pageContext.request.contextPath}/reflect/queryAll',
             fit:true,
@@ -62,10 +62,10 @@
 
 <div  class="easyui-layout" data-options="fit:true">
     <div data-options="region:'center',">
-        <table id="stDg" ></table>
+        <table id="reDg" ></table>
 
 
-        <div id="stDa"></div>
+        <div id="reDa"></div>
 
     </div>
 </div>

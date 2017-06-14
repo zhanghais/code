@@ -10,4 +10,5 @@ import java.util.List;
 public interface ReflectDao {
     public void delete(String id);
     public List<Reflect> queryAll();
+    void deleteByUserId(String id);
 }

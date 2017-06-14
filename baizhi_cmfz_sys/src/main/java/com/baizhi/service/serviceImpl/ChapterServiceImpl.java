@@ -37,4 +37,9 @@ public class ChapterServiceImpl implements ChapterService {
         List<Chapter> chapters = chapterDao.queryAll();
         return chapters;
     }
+
+    public List<Chapter> queryByWenId(String id) {
+        List<Chapter> chapters = chapterDao.queryByWenId(id);
+        return chapters;
+    }
 }

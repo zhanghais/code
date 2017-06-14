@@ -1,5 +1,6 @@
 package com.baizhi.service.serviceImpl;
 
+import com.baizhi.dao.ChapterDao;
 import com.baizhi.dao.WenDao;
 import com.baizhi.entity.Wen;
 import com.baizhi.service.WenService;
@@ -18,12 +19,14 @@ import java.util.UUID;
 public class WenServiceImpl implements WenService {
     @Autowired
     private WenDao wenDao;
+    @Autowired
+    private ChapterDao chapterDao;
     public void save(Wen wen) {
-        wen.setId(UUID.randomUUID().toString());
         wenDao.save(wen);
     }
 
     public void delete(String id) {
+        chapterDao.deleteByWenId(id);
         wenDao.delete(id);
     }
 

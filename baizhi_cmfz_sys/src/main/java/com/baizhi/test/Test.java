@@ -8,9 +8,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/6/12 0012.
- */
 public class Test {
     public static void main(String[] args) {
         ApplicationContext context=new ClassPathXmlApplicationContext("spring-basic.xml");
@@ -20,5 +17,10 @@ public class Test {
             System.out.println(menu);
 
         }
+        long a=8;
+        String s = String.valueOf(a);
+        Integer integer = Integer.valueOf(s);
+        int c = 1 ;
+
     }
 }

@@ -9,6 +9,11 @@
     <version>1.0-RELEASE</version>
     <dependencies>
         <dependency>
+            <groupId>com.md5</groupId>
+            <artifactId>md5</artifactId>
+            <version>6.0</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>

@@ -12,4 +12,6 @@ public interface ChapterDao {
     void delete(String id);
     Chapter queryById(String id);
     List<Chapter> queryAll();
+    List<Chapter> queryByWenId(String id);
+    void deleteByWenId(String id);
 }

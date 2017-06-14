@@ -4,8 +4,9 @@
 
 <select id="queryByType" resultType="Si">
   select id,title,name,date,type,path,txt from c_si where type=#{type}
-</select><insert id="save" parameterType="Si">
-        insert into c_admin values(#{id},#{title},#{name},#{date},#{type},
+</select>
+    <insert id="save" parameterType="Si">
+        insert into c_si values(#{id},#{title},#{name},#{date},#{type},
         #{path},#{txt})
     </insert>
     <delete id="delete" parameterType="String">

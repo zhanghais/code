@@ -28,17 +28,17 @@ public class ImageController {
     public void save(MultipartFile aaa, HttpServletRequest request,String description) throws IOException {
         try {
             String realPath = request.getSession().getServletContext().getRealPath("/");
-            File file = new File(realPath,"upload");
+            File file = new File(realPath,"image");
             if(!file.exists()){
                 file.mkdirs();
             }
             System.out.println(aaa);
             System.out.println(description);
             aaa.transferTo(new File(file,aaa.getOriginalFilename()));
-            System.out.println(realPath+"/upload"+aaa.getOriginalFilename());
+            System.out.println(realPath+"/image"+aaa.getOriginalFilename());
             Image image = new Image();
             image.setDescription(description);
-            image.setThumbnail("/upload/"+aaa.getOriginalFilename());
+            image.setThumbnail("/image/"+aaa.getOriginalFilename());
             imageService.save(image);
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,7 +10,12 @@
                 columns: [[
                     {title: "编号", field: "id", width: 200, align: 'center'},
                     {title: "描述", field: "description", width: 200, align: 'center'},
-                    {title: "地址", field: "thumbnail", width: 200, align: 'center'},
+                    {
+                        title: "封面图片", field: "wen", width: 60, align: 'center',
+                        formatter: function (value, row, index) {
+                            return '<img style="width:50px; height:40px" src=\"${pageContext.request.contextPath}/'+row.thumbnail+'\"/>';
+                        }
+                    },
                     {
                         title: "操作", field: "options", width: 200, align: 'center',
                         formatter: function (value, row, index) {

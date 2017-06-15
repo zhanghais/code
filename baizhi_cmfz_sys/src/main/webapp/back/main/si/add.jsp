@@ -10,14 +10,16 @@
         <div style="margin-top: 10px;">
             封面图：<input name="aaa" type="file"/>
         </div>
-        <div style="margin-top: 10px;">
+
+        <%--<div style="margin-top: 10px;">
             发表日期：<input name="date" class="easyui-textbox" data-options="required:true"/>
-        </div>
+        </div>--%>
         <div style="margin-top: 10px;">
             类型：<input name="type" class="easyui-textbox" data-options="required:true"/>
         </div>
         <div style="margin-top: 10px;">
-            内容简介：<input name="txt" class="easyui-textbox" data-options="required:true"/>
+            内容：<textarea name="txt"/>
+            <%--<input name="txt" class="easyui-textbox" data-options="required:true"/>--%>
         </div>
 
 

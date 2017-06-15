@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.WebService;
 import javax.ws.rs.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -26,9 +27,19 @@ public class UserServiceImpl implements UserService {
     @Produces("application/json;charset=UTF-8")
     public HashMap<String,Object> save(User user) {
         HashMap<String,Object> map=new HashMap<String, Object>();
-        user.setId(UUID.randomUUID().toString());
-        userDao.save(user);
-
+        try {
+            user.setId(UUID.randomUUID().toString());
+            String salt = Saltutils.getSalt(6);
+            user.setSalt(salt);
+            String digest = MD5Utils.getDigest(user.getPassowrd() + salt);
+            user.setPassowrd(digest);
+            userDao.save(user);
+            map.put("user",user);
+            map.put("message","注册成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("message","注册失败");
+        }
         return map;
     }
     @POST
@@ -61,8 +72,35 @@ public class UserServiceImpl implements UserService {
     @Produces("application/json;charset=UTF-8")
     public HashMap<String,Object> login(@PathParam("name") String name,@PathParam("password") String password) {
         HashMap<String,Object> map=new HashMap<String, Object>();
-
-
+        User user = userDao.queryByName(name);
+        if(user!=null){
+            String pwdDB = user.getPassowrd();
+            String salt = user.getSalt();
+            if(MD5Utils.getDigest(password+salt).equals(pwdDB)){
+                map.put("message", "登陆成功");
+            }else {
+                map.put("message","密码错误");
+            }
+        }else {
+            map.put("message", "用户名不存在");
+        }
+        return map;
+    }
+    @GET
+    @Path("/queryFive")
+    @Produces("application/json;charset=UTF-8")
+    public HashMap<String,Object> queryFive(){
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        List<User> users = userDao.queryAll();
+        int size = users.size();
+        if(size>5){
+            double v = Math.random() * (size-6);
+            int round = (int) Math.round(v);
+            List<User> users1 = users.subList(round, 5);
+            map.put("users",users1);
+        }else{
+            map.put("users",users);
+        }
         return map;
     }
 }

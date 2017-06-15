@@ -11,4 +11,5 @@ public interface UserService {
     HashMap<String,Object> save(User user);
     HashMap<String,Object> update(User user);
     HashMap<String,Object> login(String name,String password);
+    HashMap<String,Object> queryFive();
 }

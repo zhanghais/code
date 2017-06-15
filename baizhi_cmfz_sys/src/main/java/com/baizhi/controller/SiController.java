@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 /**
  * Created by Administrator on 2017/6/13 0013.
@@ -34,6 +35,7 @@ public class SiController {
             System.out.println(aaa.getOriginalFilename());
             aaa.transferTo(new File(file,aaa.getOriginalFilename()));
             si.setPath("/image/"+aaa.getOriginalFilename());
+            si.setDate(new Date());
             siService.save(si);
         } catch (IOException e) {
             e.printStackTrace();

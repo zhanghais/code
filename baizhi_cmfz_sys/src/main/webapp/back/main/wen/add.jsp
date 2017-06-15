@@ -14,7 +14,7 @@
             封面图：<input name="aaa" type="file"/>
         </div>
         <div style="margin-top: 10px;">
-            专辑名字：<input name="bbb" type="file" multiple/>
+            选择音频文件：<input name="bbb" type="file" multiple/>
         </div>
         <div style="margin-top: 10px;">
             播音：<input name="broadscast" class="easyui-textbox" data-options="required:true"/>

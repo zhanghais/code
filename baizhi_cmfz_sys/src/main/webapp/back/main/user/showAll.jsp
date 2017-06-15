@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java"%>
 <script>
     var $dg,$da;
     $(function () {
@@ -130,7 +130,3 @@
 
         </div>
     </div>
-
-
-
-

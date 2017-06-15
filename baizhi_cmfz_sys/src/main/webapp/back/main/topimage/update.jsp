@@ -23,6 +23,5 @@
         //构建子页面元素的操作
         console.log("${param.id}");
         $("#inputForm").form('load','${pageContext.request.contextPath}/image/queryById?id='+'${param.id}');
-
     });
 </script>

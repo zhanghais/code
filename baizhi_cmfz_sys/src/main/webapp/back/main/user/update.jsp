@@ -15,13 +15,13 @@
             真实姓名:<input  name="nickname" class="easyui-textbox" /><br/>
         </div>
         <div style="margin-top: 10px;">
-            地址:<input  name="location" class="easyui-textbox" /><br/>
-        </div>
+        地址:<input  name="location" class="easyui-textbox" /><br/>
+    </div>
         <div style="margin-top: 10px;">
             个性签名:<input  name="description" class="easyui-textbox" /><br/>
         </div>
         <div style="margin-top: 10px;">
-        电话:<input  name="phone" class="easyui-textbox" /><br/>
+            电话:<input  name="phone" class="easyui-textbox" /><br/>
         </div>
         <div style="margin-top: 10px;">
             密码:<input  name="passoword" class="easyui-textbox" /><br/>

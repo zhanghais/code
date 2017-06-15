@@ -4,6 +4,7 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/back/easyui/css/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/back/easyui/css/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/back/easyui/css/IconExtension.css">
     <script src="${pageContext.request.contextPath}/back/easyui/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/back/easyui/js/jquery.easyui.min.js"></script>
     <script src="${pageContext.request.contextPath}/back/easyui/js/form.validator.rules.js"></script>
@@ -17,7 +18,7 @@
             $.post("/baizhi_cmfz_sys/menu/queryAll",function(menus){
 
                 $.each(menus,function(i,menu){
-                    console.log("i, menu")
+
                     var content = "<div style='text-align: center;'>";
                     $.each(menu.menus,function(j,child){
                         content +="<div onclick=\"addTabs('"+child.name+"','"+child.icon+"','"+child.href+"')\" class='easyui-linkbutton' data-options=\"plain:true,iconCls:'"+child.icon+"'\" style='border:1px solid green; width:90%;margin: 5 0 5 0 ;'>"+child.name+"</div>";

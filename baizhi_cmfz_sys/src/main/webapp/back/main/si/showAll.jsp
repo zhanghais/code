@@ -15,8 +15,6 @@
                 {title: "上师姓名", field: "name",width:100, align: 'center'},
                 {title: "发布日期", field: "date",width:100, align: 'center'},
                 {title: "类型", field: "type",width:100, align: 'center'},
-
-                {title: "文章的html", field: "description",width:100, align: 'center'},
                 {
                     title: "封面图片", field: "wen", width: 60, align: 'center',
                     formatter: function (value, row, index) {
@@ -26,7 +24,8 @@
                 {
                     title: "操作", field: "options", width: 160, align: 'center',
                     formatter: function (value, row, index) {
-                        return "<a class='del' onClick=\"del('" + row.id + "')\" href='javascript:;'>删除</a>&nbsp;&nbsp;";
+                        return "<a class='del' onClick=\"del('" + row.id + "')\" href='javascript:;'>删除</a>&nbsp;&nbsp;" +
+                                "<a class='query' onClick=\"query('" + row.id + "')\" href='javascript:;'>查看文章</a>";
                     }
                 }
             ]],
@@ -36,9 +35,9 @@
                     iconCls: 'icon-remove',
 
                 });
-                $(".edit").linkbutton({
+                $(".query").linkbutton({
                     plain: true,
-                    iconCls: 'icon-edit',
+                    iconCls: 'icon-help',
                 });
             },
             pagination:true,
@@ -62,11 +61,20 @@
         });
     }
     //修改的操作
-    function add(){
+    function query(id){
         $da.dialog({
             width:600,
             height:300,
             title:"文章详细信息",
+            href:'${pageContext.request.contextPath}/back/main/si/html/show.jsp?id='+id,
+        });
+
+    }
+    function add() {
+        $da.dialog({
+            width:600,
+            height:300,
+            title:"添加文章",
             iconCls:"icon-man",
             href:'${pageContext.request.contextPath}/back/main/si/add.jsp',
             buttons:[{
@@ -78,9 +86,7 @@
                 iconCls:'icon-cancel',
                 handler:closeDa,
             }],
-
         });
-
     }
 
 

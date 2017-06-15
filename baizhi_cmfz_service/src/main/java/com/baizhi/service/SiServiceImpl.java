@@ -28,9 +28,13 @@ public class SiServiceImpl implements SiService{
     public HashMap<String, Object> queryAll() {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
-        List<Si> sis = siDao.queryAll();
-        map.put("sis",sis);
-
+        try {
+            List<Si> sis = siDao.queryAll();
+            map.put("sis",sis);
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("message","查询失败");
+        }
         return map;
     }
 }

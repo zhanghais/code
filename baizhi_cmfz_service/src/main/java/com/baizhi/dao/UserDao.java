@@ -13,4 +13,5 @@ public interface UserDao {
     public List<User> queryAll();
     public void update(User user);
     public void delete(String id);
+    User queryById(String id);
 }

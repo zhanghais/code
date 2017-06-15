@@ -11,7 +11,13 @@
     <packaging>war</packaging>
     <name>baizhi_cmfz_service Maven Webapp</name>
     <url>http://maven.apache.org</url>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.baizhi</groupId>
+            <artifactId>baizhi_commons</artifactId>
+            <version>1.0-RELEASE</version>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>baizhi_cmfz_service</finalName>
     </build>

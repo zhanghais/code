@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <bean class="com.baizhi.service.WenServiceImpl" id="wenService"/>
+    <bean class="com.baizhi.service.SiServiceImpl" id="siService"/>
+    <bean class="com.baizhi.service.ImageServiceImpl" id="imageService"/>
+    <bean class="com.baizhi.service.UserServiceImpl" id="userService"/>
+
+
+    <jaxrs:server address="/imageService" serviceClass="com.baizhi.service.ImageServiceImpl">
+        <jaxrs:serviceBeans>
+            <ref bean="imageService"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="fastJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+<jaxrs:server address="/wenService" serviceClass="com.baizhi.service.WenServiceImpl">
+    <jaxrs:serviceBeans>
+        <ref bean="wenService"/>
+    </jaxrs:serviceBeans>
+
+    <jaxrs:providers>
+        <ref bean="fastJsonProvider"/>
+    </jaxrs:providers>
+</jaxrs:server>
+    <jaxrs:server address="/siService" serviceClass="com.baizhi.service.SiServiceImpl">
+        <jaxrs:serviceBeans>
+            <ref bean="siService"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="fastJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <jaxrs:server serviceClass="com.baizhi.service.UserServiceImpl" address="/userService">
+        <jaxrs:serviceBeans>
+            <ref bean="userService"></ref>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="fastJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+        <bean class="com.alibaba.fastjson.support.jaxrs.FastJsonProvider" id="fastJsonProvider"></bean>
+</beans>

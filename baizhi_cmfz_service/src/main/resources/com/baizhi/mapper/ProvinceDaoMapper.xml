@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ProvinceDao">
+
+    <select id="queryById" parameterType="String" resultType="Province">
+        select id,code,name from c_province
+    </select>
+    <select id="queryAll" parameterType="String" resultType="Province">
+        select id,code,name from c_province
+    </select>
+</mapper>

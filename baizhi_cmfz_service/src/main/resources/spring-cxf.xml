@@ -7,6 +7,26 @@
     <bean class="com.baizhi.service.SiServiceImpl" id="siService"/>
     <bean class="com.baizhi.service.ImageServiceImpl" id="imageService"/>
     <bean class="com.baizhi.service.UserServiceImpl" id="userService"/>
+    <bean class="com.baizhi.service.ProvinceServiceImpl" id="provinceService"/>
+    <bean class="com.baizhi.service.CityServiceImpl" id="cityService"/>
+    <jaxrs:server address="/provinceService" serviceClass="com.baizhi.service.ProvinceServiceImpl">
+        <jaxrs:serviceBeans>
+            <ref bean="provinceService"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="fastJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+    <jaxrs:server address="/cityService" serviceClass="com.baizhi.service.CityServiceImpl">
+        <jaxrs:serviceBeans>
+            <ref bean="cityService"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="fastJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
 
 
     <jaxrs:server address="/imageService" serviceClass="com.baizhi.service.ImageServiceImpl">

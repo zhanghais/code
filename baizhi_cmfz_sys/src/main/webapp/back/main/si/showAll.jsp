@@ -63,8 +63,8 @@
     //修改的操作
     function query(id){
         $da.dialog({
-            width:600,
-            height:300,
+            width:1000,
+            height:600,
             title:"文章详细信息",
             href:'${pageContext.request.contextPath}/back/main/si/html/show.jsp?id='+id,
         });
@@ -72,8 +72,8 @@
     }
     function add() {
         $da.dialog({
-            width:600,
-            height:300,
+            width:1000,
+            height:600,
             title:"添加文章",
             iconCls:"icon-man",
             href:'${pageContext.request.contextPath}/back/main/si/add.jsp',
